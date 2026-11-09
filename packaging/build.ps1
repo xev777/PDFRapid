@@ -6,7 +6,8 @@ $ErrorActionPreference = "Stop"
 $root = Split-Path $PSScriptRoot -Parent
 Set-Location $root
 $ver = "1.0.0"
-$py = "$root\venv\Scripts\python"
+# Python del proyecto (venv) o, en GitHub Actions, el del sistema.
+$py = if (Test-Path "$root\venv\Scripts\python.exe") { "$root\venv\Scripts\python" } else { "python" }
 
 # Seguridad antes de compilar (ver SECURITY.md): lista de componentes (SBOM) de lo que lleva el instalador,
 # revisión de vulnerabilidades conocidas de esas versiones (pip-audit, usa internet) y análisis del código (bandit).
@@ -15,9 +16,9 @@ New-Item -ItemType Directory -Force "build" | Out-Null
 & $py packaging\sbom.py build\sbom.cdx.json build\sbom-reqs.txt $ver
 if ($LASTEXITCODE -ne 0) { throw "No se pudo generar la lista de componentes (SBOM)" }
 if ($env:PDFRAPID_SKIP_AUDIT -ne "1") {
-    & "$root\venv\Scripts\pip-audit" -r build\sbom-reqs.txt --no-deps --disable-pip --progress-spinner off
+    & $py -m pip_audit -r build\sbom-reqs.txt --no-deps --disable-pip --progress-spinner off
     if ($LASTEXITCODE -ne 0) { throw "pip-audit: hay dependencias con vulnerabilidades conocidas (actualízalas) o no hubo conexión" }
-    & "$root\venv\Scripts\bandit" -q -r core ui dialogs models utils main.py pdfgm_merge.py -ll
+    & $py -m bandit -q -r core ui dialogs models utils main.py pdfgm_merge.py -ll
     if ($LASTEXITCODE -ne 0) { throw "bandit: revisa los hallazgos de seguridad del código" }
 } else { Write-Host "AVISO: revisión de vulnerabilidades omitida (PDFRAPID_SKIP_AUDIT=1)" }
 
@@ -55,7 +56,7 @@ Copy-Item -Recurse "build\dist\PDFRapid\*" $tmp
 Copy-Item -Recurse "docs\legal" "$tmp\legal"; Copy-Item "LICENSE" "$tmp\LICENSE.txt"; Copy-Item "packaging\THIRD_PARTY_NOTICES.txt" $tmp
 Set-Content -Encoding utf8 "$tmp\portable.txt" "PDFRapid portable: la configuracion y el log se guardan en la carpeta data. Borra este archivo para usar el modo normal."
 New-Item -ItemType Directory -Force "build\installer" | Out-Null
-& "$root\venv\Scripts\python" -c "import shutil; shutil.make_archive(r'build\installer\PDFRapid-$ver-portable', 'zip', r'build\portable', 'PDFRapid')"
+& $py -c "import shutil; shutil.make_archive(r'build\installer\PDFRapid-$ver-portable', 'zip', r'build\portable', 'PDFRapid')"
 Write-Host "Portable en build\installer\PDFRapid-$ver-portable.zip"
 Copy-Item build\sbom.cdx.json "build\installer\PDFRapid-$ver-sbom.cdx.json"
 Write-Host "Lista de componentes en build\installer\PDFRapid-$ver-sbom.cdx.json"

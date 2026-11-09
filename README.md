@@ -60,7 +60,9 @@ opcional y desactivado por defecto, es pedir un sello de tiempo al firmar.
 
 ## Descargar
 
-Instalador y versión portable: ver la sección *Releases* del repositorio. Si Windows muestra
+Instalador y versión portable: [Releases](https://github.com/xev777/PDFRapid/releases) (con sus SHA-256).
+Se compilan con [GitHub Actions](.github/workflows/build.yml) desde este código; ver la
+[política de firma de código](CODE_SIGNING.md). Si Windows muestra
 «Windows protegió su PC», elige *Más información → Ejecutar de todas formas* (el instalador aún no está
 firmado con un certificado de código).
 

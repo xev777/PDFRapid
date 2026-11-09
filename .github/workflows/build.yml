@@ -1,0 +1,53 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Compila PDFRapid en GitHub (instalador, portable y SBOM) desde el código público, para que cualquiera pueda
+# comprobar que los binarios salen de este código y para la firma de código (ver CODE_SIGNING.md).
+name: build
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-ocr.txt -r requirements-dev.txt
+
+      - name: Pruebas
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: python -m pytest -q
+
+      - name: Inno Setup
+        run: |
+          if (-not (Test-Path "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe")) { choco install innosetup -y --no-progress }
+
+      - name: Compilar (SBOM, pip-audit, bandit, PyInstaller, Inno Setup, portable)
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File packaging\build.ps1
+
+      - name: SHA-256
+        working-directory: build/installer
+        run: Get-ChildItem *.exe, *.zip, *.json | Get-FileHash -Algorithm SHA256 | ForEach-Object { "$($_.Hash.ToLower()) *$(Split-Path $_.Path -Leaf)" } | Set-Content -Encoding ascii SHA256SUMS.txt
+
+      # La firma con SignPath se añadirá aquí cuando aprueben el proyecto (ver CODE_SIGNING.md).
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PDFRapid-windows
+          path: build/installer/*
+          if-no-files-found: error

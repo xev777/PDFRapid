@@ -59,7 +59,9 @@ by default, is requesting a timestamp when signing.
 
 ## Download
 
-Installer and portable version: see the repository's *Releases*. If Windows shows "Windows protected your PC",
+Installer and portable version: [Releases](https://github.com/xev777/PDFRapid/releases) (with SHA-256 hashes).
+Built with [GitHub Actions](.github/workflows/build.yml) from this source; see the
+[code signing policy](CODE_SIGNING.md). If Windows shows "Windows protected your PC",
 choose *More info → Run anyway* (the installer is not yet signed with a code-signing certificate).
 
 ## Run from source
