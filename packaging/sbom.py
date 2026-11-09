@@ -84,4 +84,4 @@ if __name__ == "__main__":
     bom, pinned = build(version)
     with open(out, "w", encoding="utf-8") as f: json.dump(bom, f, indent=1, ensure_ascii=False)
     with open(reqs, "w", encoding="utf-8") as f: f.write("\n".join(pinned) + "\n")
-    print(f"SBOM: {len(bom['components'])} componentes → {out}")
+    print(f"SBOM: {len(bom['components'])} componentes -> {out}")
