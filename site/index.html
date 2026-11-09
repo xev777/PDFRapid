@@ -19,6 +19,8 @@ header{display:flex;align-items:center;justify-content:space-between;padding:16p
 .brand{display:flex;gap:10px;align-items:center;font-weight:700;font-size:20px;color:var(--fg);text-decoration:none}
 .brand img{width:34px;height:34px}nav a{margin-left:16px;text-decoration:none;color:var(--mut)}
 .lang button{background:none;border:1px solid var(--line);color:var(--fg);border-radius:6px;padding:4px 10px;cursor:pointer;margin-left:6px}
+header{flex-wrap:wrap;gap:8px}.lang{white-space:nowrap}
+@media (max-width:640px){header>div{display:flex;width:100%;justify-content:space-between;align-items:center}nav a{margin:0 12px 0 0}.hero{padding-top:20px}}
 .lang button.on{background:var(--acc);border-color:var(--acc);color:#fff}
 .hero{text-align:center;padding:48px 0 24px}.hero h1{font-size:clamp(30px,5vw,48px);margin:0 0 12px;line-height:1.15}
 .hero p{color:var(--mut);font-size:19px;max-width:680px;margin:0 auto 26px}
