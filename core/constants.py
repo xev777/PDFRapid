@@ -8,7 +8,7 @@ APP_VERSION = "1.0"
 APP_TAGLINE = "Editor de PDF libre y sin conexión"
 APP_AUTHOR = "Fernando Erazo"
 SOURCE_URL = "https://github.com/xev777/PDFRapid"                 # código fuente público (AGPL)
-DONATE_URL = "https://ko-fi.com/pdfrapid"      # provisional: página de donación (Ko-fi)
+DONATE_URL = "https://ko-fi.com/fererazo77"    # página de donación (Ko-fi)
 APP_TITLE = f"{APP_NAME} — Editor de PDF"
 
 # ══════════════════════════════════════════════════════════
