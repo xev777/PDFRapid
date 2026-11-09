@@ -1,0 +1,4 @@
+pytest
+pyinstaller>=6.10
+pip-audit   # vulnerabilidades conocidas de las dependencias (build.ps1)
+bandit      # análisis de seguridad del código (build.ps1)

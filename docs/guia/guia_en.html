@@ -1,0 +1,108 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later · Copyright (C) 2026 Fernando Erazo -->
+<!-- User guide. core/guide.py turns it into a PDF (Help → User guide). -->
+<h1>PDFRapid — User guide</h1>
+<p class="sub">PDF viewer and editor for Windows · version {version}</p>
+
+<h2>1. Getting started</h2>
+<ul>
+<li><b>Open:</b> File → Open PDF (Ctrl+O), drag the file onto the window, or "Open with → PDFRapid" in Explorer. Each document opens in its own tab (Ctrl+Tab to switch).</li>
+<li><b>Save:</b> Ctrl+S saves over the same file; Ctrl+Shift+S saves a copy. What you add (text, shapes, signatures…) is saved as standard PDF annotations: visible in any reader and still editable in PDFRapid.</li>
+<li><b>Undo:</b> Ctrl+Z and Ctrl+Shift+Z. If the program closes unexpectedly, it offers to recover autosaved changes the next time it starts.</li>
+<li><b>Zoom and pages:</b> Ctrl+mouse wheel, Ctrl++ / Ctrl+-; Ctrl+G to go to a page; Alt+← / Alt+→ to go back or forward.</li>
+</ul>
+
+<h2>2. Sidebar tools</h2>
+<p>Each tool has a key (no Ctrl). Press <b>Esc</b> to return to Select. With the Select tool (V) you can move, resize, rotate, duplicate (Ctrl+D) or delete any object; right-click for more options (colour, width, order…).</p>
+<p><b>Arrange objects</b> (right-click one or several): align and distribute (with a single object, relative to the page), flip, <b>Position and size…</b> in millimetres, group and ungroup (one click selects the whole group), lock or hide (recover them by right-clicking an empty area; hidden objects are not printed), and copy and paste format between objects.</p>
+<table>
+<tr><th>Key</th><th>Tool</th><th>Key</th><th>Tool</th></tr>
+<tr><td>V</td><td>Select</td><td>L</td><td>Lasso (several objects)</td></tr>
+<tr><td>S</td><td>Select PDF text</td><td>N</td><td>Hand (scroll)</td></tr>
+<tr><td>T</td><td>Text</td><td>X</td><td>Text box</td></tr>
+<tr><td>M</td><td>Comment</td><td>H</td><td>Highlight</td></tr>
+<tr><td>I / A / D</td><td>Line / arrow / double arrow</td><td>B</td><td>Pencil</td></tr>
+<tr><td>R / U / C / G / F</td><td>Rectangle, rounded, circle, triangle, arrow shape</td><td>Q</td><td>Measure distance, perimeter or area</td></tr>
+<tr><td>P</td><td>Insert image</td><td>K</td><td>Handwritten signature (draw, type or image)</td></tr>
+<tr><td>O</td><td>OCR a region</td><td>E</td><td>Mark area for permanent redaction</td></tr>
+<tr><td>W</td><td>QR magnifier</td><td></td><td></td></tr>
+</table>
+<p>While drawing lines and arrows, hold <b>Ctrl</b> to snap the angle. Rulers (Ctrl+R) and guides help with alignment.</p>
+
+<h2>3. Search</h2>
+<ul>
+<li><b>Quick find</b> (top bar or Ctrl+F): type and use the arrows or Enter / Shift+F3 to move between results; the current one is highlighted in yellow.</li>
+<li><b>Search in folder</b> (Ctrl+Shift+F): finds text in every PDF in a folder.</li>
+<li>If the PDF is scanned (an image with no text), run <b>OCR</b> first (View → Panels → OCR) so it can be searched and copied.</li>
+</ul>
+
+<h2>4. Pages</h2>
+<ul>
+<li>In the thumbnails panel you can <b>reorder</b> by dragging, and right-click to <b>rotate</b> or select a range.</li>
+<li>Document → Pages: crop margins, watermark, header and footer with free text ({n}, {total}, {date}, {name}), Bates numbering and page background (colour or image).</li>
+<li>The <b>Operations between PDFs</b> tab lets you <b>merge</b> several PDFs (choosing the order), <b>split</b> one into several, insert blank pages and move pages between documents.</li>
+</ul>
+
+<h2>5. Forms and comments</h2>
+<ul>
+<li>Form fields are filled in directly on the page; the <b>Form</b> panel lists them.</li>
+<li><b>Create forms</b>: Document → Form → Add (or “Add field” in the panel). Click where the field goes, or drag to size it, and choose its name, tooltip, default value, options and whether it is required. Types: text, multi-line text, check box, radio button (buttons in the same group are mutually exclusive), drop-down list and list box. The ⋯ button of each field lets you change its properties, move it or delete it; everything can be undone.</li>
+<li><b>Detect fields</b>: Document → Form → Detect fields automatically… looks for lines to write on (“Name: ____”), underscores, check boxes and empty boxes, and creates a field on each one named after its label. Review them in the Form panel; Ctrl+Z removes them all. In a scanned PDF it finds nothing: use Fill &amp; Sign.</li>
+<li><b>Measure</b> (Q): the button's arrow chooses Distance (drag), Perimeter or Area (click each vertex; double-click or Enter finishes, Backspace removes the last one, Esc clears). For drawings, «Drawing scale…» converts measurements, for example 1 cm on paper = 1 m.</li>
+<li><b>Read aloud</b>: View → Read aloud reads the page (Ctrl+Shift+V), to the end (Ctrl+Shift+B) or the selected text, with the Windows voices. Ctrl+Shift+P pauses and Ctrl+Shift+E stops.</li>
+<li><b>Spelling</b>: when typing text, boxes and comments, unknown words are underlined in red; right-click for suggestions, add them to the dictionary or ignore them (Edit → Preferences → Spelling).</li>
+<li><b>Split by bookmarks</b>: in Operations between PDFs → Split, «By bookmarks» creates one file per chapter named after the bookmark.</li>
+<li><b>Fill &amp; Sign</b> (key J): places a check ✓, a cross ✗, a dot, a line, today's date or your initials with one click. The button's arrow chooses the symbol; size and colour follow the format bar.</li>
+<li><b>Document images</b>: right-click an image of the PDF → convert it into an object (move, resize, rotate or crop it), replace it, save it as PNG/JPEG or delete it. If the image repeats (a logo on every page), replacing or deleting it changes it everywhere.</li>
+<li><b>Links</b>: Document → Links → Add link (draw the area and choose a page or a web address); “Manage links” lets you change or delete them.</li>
+<li><b>Reply to comments</b>: double-click a comment to reply and set its status (accepted, rejected, cancelled, completed). Replies are also shown in Acrobat.</li>
+<li><b>Clear form</b> (the panel’s “Clear” button) returns every field to its default value.</li>
+<li>The <b>Comments</b> panel (Ctrl+Shift+C) lists every annotation in the document so you can review or jump to it; you can filter by type, status, author or text, and «Summary…» creates a PDF with the comments shown.</li>
+<li><b>Flatten</b> (Document → Flatten annotations and forms) turns everything into fixed page content: useful before sending a document that must not be changed.</li>
+</ul>
+<h3>Print, export and batch processing</h3>
+<ul>
+<li><b>Print</b> (Ctrl+P): choose pages, with or without comments, actual or fitted size, multiple pages per sheet, booklet (double-sided, short edge) or poster across several sheets; then the preview.</li>
+<li><b>Export</b> (File → Export): Word, Excel (each table on a sheet), text, HTML, <b>Markdown</b> (headings by font size, lists, bold, tables and links; no images), images or PDF/A.</li>
+<li><b>Batch processing</b> (Document): apply OCR, compression, watermark, numbering, password, PDF/A, flattening, scrubbing or export (text, Excel or Markdown) to every PDF in a folder. Originals are not changed.</li>
+</ul>
+
+<h2>6. Signing</h2>
+<p><b>Handwritten signature</b> (key K): an image of your signature. Handy for informal documents, but it is <b>not</b> a legally valid electronic signature.</p>
+<p><b>Electronic signature with a certificate</b> (signature button on the top bar or Document → Signatures → Sign with digital certificate):</p>
+<ol>
+<li>Choose where the certificate is: a .p12/.pfx file, a USB token or smart card, or a certificate installed in Windows.</li>
+<li>Choose the stamp style (text or with a QR code) and its size; a box follows the mouse: click where the signature should go.</li>
+<li>Optional: a <b>timestamp</b> from a server (TSA) and <b>long-term validation (LTV)</b>, which stores in the document what is needed to check the certificate many years from now. Both need internet at that moment.</li>
+</ol>
+<p>PDFRapid never stores the certificate password or the token PIN. The <b>Digital signatures</b> panel shows who signed, whether the document changed afterwards and whether the signature is long-term.</p>
+<p><b>QR magnifier</b> (top-bar button or key W): hover over a QR code to read its content in a small window; click to copy it.</p>
+
+<h2>7. Protect and archive</h2>
+<ul>
+<li><b>Password</b>: Document → Protect → Password protect (to open and/or printing and copying permissions).</li>
+<li><b>Permanent redaction</b>: mark areas (key E) or search for text to redact, then "Apply permanent redaction". The content underneath is <b>removed</b> from the file, not just covered.</li>
+<li><b>Remove hidden information</b>: metadata, attachments, JavaScript, links to files and thumbnails.</li>
+<li><b>PDF/A</b> (File → Export → As PDF/A): creates a long-term preservation copy (PDF/A-2b), as many agencies and archives require. It embeds fonts and the colour profile and removes anything that might stop working. For a signed PDF/A, convert first and then sign the copy.</li>
+</ul>
+
+<h2>8. Create and convert</h2>
+<ul>
+<li>File → Create PDF: from images, from Word/Excel/PowerPoint (uses Office or LibreOffice if installed) or from the scanner.</li>
+<li>File → Export: to Word (.docx), pages as images, PDF/A.</li>
+<li>Document → Compress PDF reduces the size (images and clean-up); Document → Compare with another PDF shows the differences.</li>
+</ul>
+
+<h2>9. Security and privacy</h2>
+<ul>
+<li>PDFRapid works <b>offline</b>: it never sends your documents anywhere. Only the timestamp and long-term validation, if you turn them on, contact a server.</li>
+<li>It does not run PDF JavaScript. Links open only if they are web or e-mail links, and always after asking. Attachments open only if they are known document types.</li>
+</ul>
+
+<h2>10. Troubleshooting</h2>
+<ul>
+<li><b>"I can't select or search text":</b> the PDF is a scanned image; use OCR.</li>
+<li><b>"The document is protected":</b> the author restricted copying or editing; you need the permissions password.</li>
+<li><b>"The signature shows as invalid in another program":</b> usually that program does not trust the authority that issued your certificate; install the authority's root certificate.</li>
+<li><b>Log:</b> if something goes wrong, the <i>pdfrapid.log</i> file in your user folder helps find the cause.</li>
+</ul>
+<p class="sub">In-app help: <b>F1</b> shows the help for the window, panel or tool you are using, the <b>?</b> button of each window does the same, <b>Shift+F1</b> opens the Help center with search and <b>Ctrl+F1</b> shows every keyboard shortcut. The reference for each feature is at the end of this guide. PDFRapid is free software (GNU AGPL v3 or later).</p>

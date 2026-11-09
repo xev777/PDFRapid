@@ -1,0 +1,21 @@
+PDFRapid - aviso importante
+
+LICENCIA
+PDFRapid es software libre bajo la licencia GNU AGPL-3.0 o posterior (pantalla siguiente).
+Puedes usarlo en tantos equipos como quieras, estudiarlo, modificarlo y redistribuirlo
+respetando esa licencia. Es gratuito; si te resulta util puedes apoyarlo con una donacion voluntaria.
+
+SIN GARANTIA
+El programa se entrega "tal cual", sin garantia de ningun tipo. Haz copia de tus documentos
+importantes antes de modificarlos.
+
+PRIVACIDAD
+PDFRapid funciona 100 % sin conexion: no envia tus documentos ni ningun dato a internet.
+Las preferencias, el registro tecnico y las copias de recuperacion se guardan solo en tu equipo.
+
+FIRMAS
+La firma visual (dibujo, texto o imagen) NO es una firma electronica con validez legal.
+La firma digital con certificado depende de que el certificado lo emita una entidad acreditada.
+
+La politica de privacidad y la licencia se instalan en la carpeta "legal" del programa.
+Codigo fuente: https://github.com/xev777/PDFRapid

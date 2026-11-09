@@ -1,0 +1,43 @@
+PDFRapid — Copyright (C) 2026 Fernando Erazo
+Licensed under the GNU Affero General Public License v3.0 or later (see LICENSE).
+Source code: available on request from the author / with every copy distributed.
+
+This program includes the following third-party components:
+
+Component                 License
+------------------------  ------------------------------------------------------------
+Python 3.12               PSF License
+PyMuPDF / MuPDF           GNU AGPL v3 (Artifex Software)
+PyQt6                     GNU GPL v3 (Riverbank Computing)
+Qt 6 (PyQt6-Qt6)          GNU LGPL v3 (The Qt Company). The Qt libraries are shipped as
+                          separate DLL files in the installation folder and can be
+                          replaced by the user with compatible versions.
+PyQt6-sip                 BSD-2-Clause
+pypdf                     BSD-3-Clause
+pdf2docx                  MIT
+python-docx               MIT
+mammoth, cobble           BSD-2-Clause
+qrcode                    BSD-3-Clause (includes MIT-licensed code by Kazuhiko Arase).
+                          "QR Code" is a registered trademark of DENSO WAVE INCORPORATED.
+pyHanko, certvalidator    MIT
+python-pkcs11             MIT
+zxing-cpp                 Apache-2.0
+asn1crypto, oscrypto      MIT
+cryptography              Apache-2.0 OR BSD-3-Clause
+RapidOCR (+ PaddleOCR models)  Apache-2.0
+ONNX Runtime              MIT (Microsoft)
+OpenCV (headless)         Apache-2.0
+NumPy                     BSD-3-Clause (and bundled permissive licenses)
+Shapely                   BSD-3-Clause
+pyclipper                 MIT
+Pillow                    MIT-CMU
+lxml                      BSD-3-Clause
+fontTools                 MIT
+PyYAML, omegaconf         MIT / BSD
+certifi                   MPL-2.0
+requests, urllib3, idna, charset-normalizer   Apache-2.0 / MIT / BSD
+tqdm                      MPL-2.0 AND MIT
+PyInstaller bootloader    GPLv2+ with bootloader exception
+
+The full text of each license is available at https://spdx.org/licenses/ and in the
+metadata folders (*.dist-info) included in the installation directory.

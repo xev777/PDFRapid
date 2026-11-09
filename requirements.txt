@@ -1,0 +1,12 @@
+# Pdfgm - dependencias base (Python 3.12+)
+# pip install -r requirements.txt
+pymupdf>=1.24.0
+pypdf>=6.21.4   # versiones anteriores con fallos conocidos (pip-audit)
+PyQt6>=6.6.0
+pdf2docx>=0.5.8
+pyhanko>=0.25
+mammoth>=1.6   # .docx → PDF básico cuando no hay Office ni LibreOffice (BSD-2)
+qrcode>=7.4     # código QR en la firma digital visible (BSD)
+python-pkcs11>=0.7   # firma con token USB / tarjeta inteligente (MIT)
+fonttools>=4.40   # tipografías al guardar como PDF/A (MIT)
+zxing-cpp>=2.2   # leer códigos QR (lupa QR; Apache-2.0)

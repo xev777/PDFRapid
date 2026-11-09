@@ -1,0 +1,108 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later · Copyright (C) 2026 Fernando Erazo -->
+<!-- Guía de usuario. core/guide.py la convierte en PDF (Ayuda → Guía de usuario). -->
+<h1>PDFRapid — Guía de usuario</h1>
+<p class="sub">Visor y editor de PDF para Windows · versión {version}</p>
+
+<h2>1. Primeros pasos</h2>
+<ul>
+<li><b>Abrir:</b> Archivo → Abrir PDF (Ctrl+O), arrastrar el archivo a la ventana o «Abrir con → PDFRapid» desde el Explorador. Cada documento se abre en su propia pestaña (Ctrl+Tab para cambiar).</li>
+<li><b>Guardar:</b> Ctrl+S guarda sobre el mismo archivo; Ctrl+Shift+S guarda una copia. Lo que añades (textos, formas, firmas…) se guarda como anotaciones normales de PDF: se ven en cualquier lector y siguen siendo editables en PDFRapid.</li>
+<li><b>Deshacer:</b> Ctrl+Z y Ctrl+Shift+Z. Si el programa se cierra de forma inesperada, al volver a abrirlo ofrece recuperar los cambios autoguardados.</li>
+<li><b>Zoom y páginas:</b> Ctrl+rueda del ratón, Ctrl++ / Ctrl+-; Ctrl+G para ir a una página; Alt+← / Alt+→ para volver atrás o adelante.</li>
+</ul>
+
+<h2>2. Herramientas de la barra lateral</h2>
+<p>Cada herramienta tiene una tecla (sin Ctrl). Pulsa <b>Esc</b> para volver a Seleccionar. Con la herramienta Seleccionar (V) puedes mover, cambiar de tamaño, girar, duplicar (Ctrl+D) o borrar cualquier objeto; clic derecho para más opciones (color, grosor, orden…).</p>
+<p><b>Organizar objetos</b> (clic derecho sobre uno o varios): alinear y distribuir (con un solo objeto, respecto a la página), voltear, <b>Posición y tamaño…</b> en milímetros, agrupar y desagrupar (un clic selecciona todo el grupo), bloquear u ocultar (se recuperan con clic derecho en una zona vacía; lo oculto no se imprime), y copiar y pegar formato entre objetos.</p>
+<table>
+<tr><th>Tecla</th><th>Herramienta</th><th>Tecla</th><th>Herramienta</th></tr>
+<tr><td>V</td><td>Seleccionar</td><td>L</td><td>Lazo (varios objetos)</td></tr>
+<tr><td>S</td><td>Seleccionar texto del PDF</td><td>N</td><td>Mano (desplazarse)</td></tr>
+<tr><td>T</td><td>Texto</td><td>X</td><td>Caja de texto</td></tr>
+<tr><td>M</td><td>Comentario</td><td>H</td><td>Resaltar</td></tr>
+<tr><td>I / A / D</td><td>Línea / flecha / doble flecha</td><td>B</td><td>Lápiz</td></tr>
+<tr><td>R / U / C / G / F</td><td>Rectángulo, redondeado, círculo, triángulo, flecha</td><td>Q</td><td>Medir distancia, perímetro o área</td></tr>
+<tr><td>P</td><td>Insertar imagen</td><td>K</td><td>Firma manuscrita (dibujar, escribir o imagen)</td></tr>
+<tr><td>O</td><td>OCR de una región</td><td>E</td><td>Marcar zona para tachado definitivo</td></tr>
+<tr><td>W</td><td>Lupa QR</td><td></td><td></td></tr>
+</table>
+<p>Al dibujar líneas y flechas, mantén <b>Ctrl</b> para ajustar el ángulo. Las reglas (Ctrl+R) y las guías ayudan a alinear.</p>
+
+<h2>3. Buscar</h2>
+<ul>
+<li><b>Búsqueda rápida</b> (barra superior o Ctrl+F): escribe y usa las flechas o Intro / Shift+F3 para pasar de un resultado a otro; el resultado actual se resalta en amarillo.</li>
+<li><b>Buscar en carpeta</b> (Ctrl+Shift+F): busca un texto en todos los PDF de una carpeta.</li>
+<li>Si el PDF es escaneado (imagen sin texto), aplica antes <b>OCR</b> (Vista → Paneles → OCR) para que se pueda buscar y copiar.</li>
+</ul>
+
+<h2>4. Páginas</h2>
+<ul>
+<li>En el panel de miniaturas puedes <b>reordenar</b> arrastrando, y con clic derecho <b>rotar</b> o seleccionar un rango.</li>
+<li>Documento → Páginas: recortar márgenes, marca de agua, encabezado y pie con texto libre ({n}, {total}, {date}, {name}), numeración Bates y fondo de página (color o imagen).</li>
+<li>La pestaña <b>Operaciones entre PDFs</b> sirve para <b>combinar</b> varios PDF (eligiendo el orden), <b>dividir</b> uno en varios, insertar páginas en blanco y mover páginas entre documentos.</li>
+</ul>
+
+<h2>5. Formularios y comentarios</h2>
+<ul>
+<li>Los campos de los formularios se rellenan directamente sobre la página; el panel <b>Formulario</b> los muestra en lista.</li>
+<li><b>Crear formularios</b>: Documento → Formulario → Añadir (o «Añadir campo» en el panel). Haz clic donde va el campo, o arrastra para darle tamaño, y elige su nombre, ayuda, valor inicial, opciones y si es obligatorio. Tipos: texto, texto de varias líneas, casilla, botón de opción (los del mismo grupo se excluyen entre sí), lista desplegable y cuadro de lista. El botón ⋯ de cada campo permite cambiar sus propiedades, moverlo o eliminarlo; todo se puede deshacer.</li>
+<li><b>Detectar campos</b>: Documento → Formulario → Detectar campos automáticamente… busca líneas para escribir («Nombre: ____»), guiones bajos, casillas y recuadros vacíos, y crea un campo en cada uno con el nombre de su etiqueta. Revísalos en el panel Formulario; Ctrl+Z los quita todos. En un PDF escaneado no encuentra nada: usa Rellenar y firmar.</li>
+<li><b>Medir</b> (Q): la flecha del botón elige Distancia (arrastrar), Perímetro o Área (clic en cada vértice; doble clic o Intro termina, Retroceso quita el último, Esc borra). Para planos, «Escala del plano…» convierte las medidas, por ejemplo 1 cm del papel = 1 m.</li>
+<li><b>Leer en voz alta</b>: Vista → Leer en voz alta lee la página (Ctrl+Shift+V), hasta el final (Ctrl+Shift+B) o el texto seleccionado, con las voces de Windows. Ctrl+Shift+P pausa y Ctrl+Shift+E detiene.</li>
+<li><b>Ortografía</b>: al escribir textos, cajas y comentarios, las palabras desconocidas se subrayan en rojo; clic derecho para ver sugerencias, añadirlas al diccionario o ignorarlas (Editar → Preferencias → Ortografía).</li>
+<li><b>Dividir por marcadores</b>: en Operaciones entre PDFs → Dividir, «Por marcadores» crea un archivo por capítulo con el nombre del marcador.</li>
+<li><b>Rellenar y firmar</b> (tecla J): pone con un clic una marca ✓, una cruz ✗, un punto, una línea, la fecha de hoy o tus iniciales. La flecha del botón elige el símbolo; el tamaño y el color siguen a la barra de formato.</li>
+<li><b>Imágenes del documento</b>: clic derecho sobre una imagen del PDF → convertirla en objeto (moverla, cambiar su tamaño, girarla o recortarla), reemplazarla, guardarla en PNG/JPEG o eliminarla. Si la imagen se repite (un logotipo en cada página), reemplazarla o eliminarla la cambia en todas.</li>
+<li><b>Enlaces</b>: Documento → Enlaces → Añadir enlace (dibuja la zona y elige una página o una dirección web); «Gestionar enlaces» permite cambiarlos o eliminarlos.</li>
+<li><b>Responder comentarios</b>: doble clic en un comentario para responder y marcar su estado (aceptado, rechazado, cancelado, completado). Las respuestas también se ven en Acrobat.</li>
+<li><b>Vaciar formulario</b> (botón «Vaciar» del panel) devuelve todos los campos a su valor inicial.</li>
+<li>El panel <b>Comentarios</b> (Ctrl+Shift+C) lista todas las anotaciones del documento para revisarlas o saltar a ellas; se pueden filtrar por tipo, estado, autor o texto, y «Resumen…» crea un PDF con los comentarios que se muestran.</li>
+<li><b>Aplanar</b> (Documento → Aplanar anotaciones y formularios) convierte todo en contenido fijo de la página: útil antes de enviar un documento que no debe modificarse.</li>
+</ul>
+<h3>Imprimir, exportar y procesar por lotes</h3>
+<ul>
+<li><b>Imprimir</b> (Ctrl+P): elige páginas, con o sin comentarios, tamaño real o ajustado, varias páginas por hoja, folleto (doble cara, borde corto) o póster en varias hojas; luego la vista previa.</li>
+<li><b>Exportar</b> (Archivo → Exportar): Word, Excel (cada tabla en una hoja), texto, HTML, <b>Markdown</b> (títulos según el tamaño de letra, listas, negrita, tablas y enlaces; sin imágenes), imágenes o PDF/A.</li>
+<li><b>Procesar por lotes</b> (Documento): aplica OCR, compresión, marca de agua, numeración, contraseña, PDF/A, aplanado, limpieza o exportación (texto, Excel o Markdown) a todos los PDF de una carpeta. Los originales no se modifican.</li>
+</ul>
+
+<h2>6. Firmar</h2>
+<p><b>Firma manuscrita</b> (tecla K): una imagen de tu firma. Es útil para documentos informales, pero <b>no</b> tiene validez de firma electrónica.</p>
+<p><b>Firma electrónica con certificado</b> (botón de firma de la barra superior o Documento → Firmas → Firmar con certificado digital):</p>
+<ol>
+<li>Elige el origen del certificado: archivo .p12/.pfx, token USB o tarjeta, o un certificado instalado en Windows.</li>
+<li>Elige el estilo del sello (texto o con código QR) y su tamaño; aparece un recuadro que sigue al ratón: haz clic donde quieras colocar la firma.</li>
+<li>Opcional: <b>sello de tiempo</b> de un servidor (TSA) y <b>firma de larga duración (LTV)</b>, que guarda en el documento la información para comprobar el certificado dentro de muchos años. Ambos necesitan internet en ese momento.</li>
+</ol>
+<p>PDFRapid nunca guarda la contraseña del certificado ni el PIN del token. El panel <b>Firmas digitales</b> muestra quién firmó, si el documento cambió después y si la firma es de larga duración.</p>
+<p><b>Lupa QR</b> (botón de la barra superior o tecla W): pasa el ratón sobre un código QR para leer su contenido en una ventanita; clic para copiarlo.</p>
+
+<h2>7. Proteger y archivar</h2>
+<ul>
+<li><b>Contraseña</b>: Documento → Proteger → Proteger con contraseña (para abrir y/o permisos de impresión y copia).</li>
+<li><b>Tachado definitivo</b>: marca zonas (tecla E) o busca texto para tachar y luego «Aplicar tachado definitivo». El contenido debajo se <b>elimina</b> del archivo, no solo se tapa.</li>
+<li><b>Eliminar información oculta</b>: metadatos, adjuntos, JavaScript, enlaces a archivos y miniaturas.</li>
+<li><b>PDF/A</b> (Archivo → Exportar → Como PDF/A): crea una copia para conservar a largo plazo (PDF/A-2b), como piden muchos trámites y archivos. Incrusta las tipografías y el perfil de color y quita lo que podría dejar de funcionar. Si quieres un PDF/A firmado, convierte primero y firma después la copia.</li>
+</ul>
+
+<h2>8. Crear y convertir</h2>
+<ul>
+<li>Archivo → Crear PDF: desde imágenes, desde Word/Excel/PowerPoint (usa Office o LibreOffice si están instalados) o desde el escáner.</li>
+<li>Archivo → Exportar: a Word (.docx), páginas como imágenes, PDF/A.</li>
+<li>Documento → Comprimir PDF reduce el tamaño (imágenes y limpieza); Documento → Comparar con otro PDF muestra las diferencias.</li>
+</ul>
+
+<h2>9. Seguridad y privacidad</h2>
+<ul>
+<li>PDFRapid funciona <b>sin conexión</b>: no envía tus documentos a ningún sitio. Solo el sello de tiempo y la firma de larga duración, si los activas, contactan un servidor.</li>
+<li>No ejecuta JavaScript de los PDF. Los enlaces se abren solo si son web o correo, y siempre preguntando. Los adjuntos solo se abren si son documentos de tipos conocidos.</li>
+</ul>
+
+<h2>10. Problemas frecuentes</h2>
+<ul>
+<li><b>«No puedo seleccionar ni buscar texto»:</b> el PDF es una imagen escaneada; usa OCR.</li>
+<li><b>«El documento está protegido»:</b> el autor restringió copiar o editar; necesitas la contraseña de permisos.</li>
+<li><b>«La firma aparece como no válida en otro programa»:</b> suele ser porque ese programa no confía en la entidad que emitió tu certificado; instala el certificado raíz de la entidad.</li>
+<li><b>Registro:</b> si algo falla, el archivo <i>pdfrapid.log</i> de tu carpeta de usuario ayuda a encontrar la causa.</li>
+</ul>
+<p class="sub">Ayuda en la aplicación: <b>F1</b> muestra la ayuda de la ventana, panel o herramienta que estás usando, el botón <b>?</b> de cada ventana hace lo mismo, <b>Shift+F1</b> abre el Centro de ayuda con buscador y <b>Ctrl+F1</b> muestra todos los atajos de teclado. Al final de esta guía está la referencia de cada función. PDFRapid es software libre (GNU AGPL v3 o posterior).</p>
