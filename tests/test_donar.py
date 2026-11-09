@@ -12,3 +12,11 @@ def test_dialogo_donar(qapp, monkeypatch):
     assert "donación" in dlg.text.text() and not abiertos       # abrir el diálogo no abre la página
     dlg.b_donate.click()
     assert abiertos == [DONATE_URL] and DONATE_URL.startswith("https://")
+
+
+def test_spec_incluye_modulos():
+    """El instalador incluye todos los módulos propios, también los que se cargan de forma diferida."""
+    import os
+    spec = open(os.path.join(os.path.dirname(__file__), "..", "packaging", "pdfrapid.spec"), encoding="utf-8").read()
+    for p in ("core", "ui", "dialogs", "models", "utils"):
+        assert f'"{p}"' in spec

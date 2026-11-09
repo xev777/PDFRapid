@@ -9,6 +9,9 @@ datas = [(ROOT + "/locales", "locales"), (ROOT + "/LICENSE", "."), (ROOT + "/doc
          (ROOT + "/packaging/THIRD_PARTY_NOTICES.txt", "."), (ROOT + "/packaging/pdfrapid.ico", ".")]
 datas += collect_data_files("rapidocr") + collect_data_files("pyhanko") + collect_data_files("pyhanko_certvalidator")
 hidden = collect_submodules("rapidocr") + collect_submodules("pyhanko") + collect_submodules("qrcode") + collect_submodules("pkcs11") + ["zxingcpp"]
+# Módulos propios importados de forma diferida (dentro de funciones): incluirlos todos para que el .exe no falle.
+for _p in ("core", "ui", "dialogs", "models", "utils"):
+    hidden += collect_submodules(_p)
 
 a = Analysis([ROOT + "/main.py"], pathex=[ROOT], datas=datas, hiddenimports=hidden,
              excludes=["tkinter", "matplotlib", "pytest", "IPython", "PyQt5", "PySide6", "PySide2"])

@@ -273,11 +273,11 @@ class MainWindow(QMainWindow):
         self._act(sm, T("Aplicar tachado definitivo…"), lambda: doc_tools.apply_redactions(self), icon="redact")
         self._act(sm, T("Eliminar información oculta…"), lambda: doc_tools.scrub_dialog(self), icon="lock")
         fsm = sub(dm, T("Firmas"), "signature")
-        self._act(fsm, T("Firmar con certificado digital…"), lambda: __import__("ui.signature_ui", fromlist=["x"]).sign_document(self), icon="signature")
+        self._act(fsm, T("Firmar con certificado digital…"), lambda: self._lazy("signature_ui", "sign_document"), icon="signature")
         self._act(fsm, T("Ver firmas digitales"), lambda: self._dock_sigs.setVisible(True), icon="lock")
         dm.addSeparator()
         self._act(dm, T("Comparar con otro PDF…"), self._compare, icon="swap")
-        self._act(dm, T("Procesar por lotes…"), lambda: __import__("ui.batch_ui", fromlist=["x"]).batch_dialog(self), icon="duplicate")
+        self._act(dm, T("Procesar por lotes…"), lambda: self._lazy("batch_ui", "batch_dialog"), icon="duplicate")
         self._act(dm, T("Comprimir PDF…"), lambda: doc_tools.compress(self), icon="save")
         lk = sub(dm, T("Enlaces"), "link")
         self._act(lk, T("Añadir enlace…"), lambda: doc_tools.add_link(self), icon="link")
@@ -301,7 +301,7 @@ class MainWindow(QMainWindow):
         self._act(hm, T("Atajos de teclado"), self.shortcuts_help, "Ctrl+F1", "help")
         self._act(hm, T("Privacidad y licencias"), self.open_legal, icon="pdf_doc")
         hm.addSeparator()
-        self._act(hm, T("Apoyar el proyecto (donar)…"), lambda: __import__("ui.donate", fromlist=["x"]).show(self), icon="heart")
+        self._act(hm, T("Apoyar el proyecto (donar)…"), lambda: self._lazy("donate", "show"), icon="heart")
         hm.addAction(self._act(None, T("Acerca de…"), self.about, icon="help"))
 
     def _build_toolbar(self):
@@ -365,7 +365,7 @@ class MainWindow(QMainWindow):
         tb.addSeparator()
         tbtn("rotate_cw", T("Rotar página 90°"), lambda: self._viewer.doc and self._rotate_pages_sig([self._viewer.current], 90))
         tb.addSeparator()
-        tbtn("digisign", T("Firmar con certificado digital…"), lambda: __import__("ui.signature_ui", fromlist=["x"]).sign_document(self))
+        tbtn("digisign", T("Firmar con certificado digital…"), lambda: self._lazy("signature_ui", "sign_document"))
         self._btn_qrlens = tbtn("qrlens", T("Lupa QR: leer el código QR de una firma") + "  (W)", self._toggle_qrlens, checkable=True)
         self.toolbox.tool_changed.connect(lambda t: self._btn_qrlens.setChecked(t == T_QRLENS))
         tbtn("speaker", T("Leer en voz alta esta página; otro clic detiene  (Ctrl+Shift+V)"),
@@ -390,7 +390,7 @@ class MainWindow(QMainWindow):
         from ui.quick_find import QuickFind
         self._qf = QuickFind(self, self._quick_count)
         spacer = QWidget(); spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred); tb.addWidget(spacer)
-        tbtn("heart", T("Apoyar el proyecto (donar)"), lambda: __import__("ui.donate", fromlist=["x"]).show(self))
+        tbtn("heart", T("Apoyar el proyecto (donar)"), lambda: self._lazy("donate", "show"))
         self.addToolBarBreak()
         self.addToolBar(self.toolbox)
 
@@ -1055,6 +1055,11 @@ class MainWindow(QMainWindow):
         except Exception as e:
             log.exception("guía de usuario")
             QMessageBox.warning(self, T("Guía de usuario"), Tf("No se pudo abrir la guía:\n{0}", e))
+
+    def _lazy(self, mod, fn):
+        """Abre una ventana cuyo módulo se carga solo al usarla (arranque más rápido)."""
+        import importlib
+        getattr(importlib.import_module("ui." + mod), fn)(self)
 
     def open_legal(self):
         """Carpeta con la política de privacidad (junto al .exe, o docs/legal en desarrollo)."""
