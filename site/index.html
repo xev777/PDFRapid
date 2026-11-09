@@ -1,0 +1,111 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDFRapid — editor de PDF libre y sin conexión</title>
+<meta name="description" content="PDFRapid: editor de PDF libre y gratuito para Windows. Anotar, firmar, formularios, OCR, unir y dividir. Funciona sin conexión, sin anuncios ni suscripción.">
+<meta property="og:title" content="PDFRapid — editor de PDF libre para Windows">
+<meta property="og:description" content="Gratis, de código abierto y 100 % sin conexión.">
+<meta property="og:image" content="https://xev777.github.io/PDFRapid/img/preview.png">
+<link rel="icon" href="img/logo.svg">
+<style>
+:root{--bg:#f8fafc;--fg:#0f172a;--mut:#475569;--card:#fff;--line:#e2e8f0;--acc:#2563eb;--acc2:#14b8a6;--warn:#f59e0b}
+@media (prefers-color-scheme:dark){:root{--bg:#0b1220;--fg:#e2e8f0;--mut:#94a3b8;--card:#111a2e;--line:#1e293b;--acc:#60a5fa}}
+*{box-sizing:border-box}body{margin:0;font:16px/1.6 "Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--fg)}
+a{color:var(--acc)}.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.brand{display:flex;gap:10px;align-items:center;font-weight:700;font-size:20px;color:var(--fg);text-decoration:none}
+.brand img{width:34px;height:34px}nav a{margin-left:16px;text-decoration:none;color:var(--mut)}
+.lang button{background:none;border:1px solid var(--line);color:var(--fg);border-radius:6px;padding:4px 10px;cursor:pointer;margin-left:6px}
+.lang button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.hero{text-align:center;padding:48px 0 24px}.hero h1{font-size:clamp(30px,5vw,48px);margin:0 0 12px;line-height:1.15}
+.hero p{color:var(--mut);font-size:19px;max-width:680px;margin:0 auto 26px}
+.btn{display:inline-block;padding:13px 24px;border-radius:10px;font-weight:600;text-decoration:none;margin:6px}
+.btn.pri{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff}.btn.sec{border:1px solid var(--line);color:var(--fg)}
+.small{color:var(--mut);font-size:14px}
+.shot{display:block;width:100%;border-radius:12px;border:1px solid var(--line);box-shadow:0 18px 50px rgba(15,23,42,.18);margin:28px 0 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:36px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0;color:var(--mut);font-size:15px}
+.band{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px;margin:24px 0}
+footer{color:var(--mut);font-size:14px;padding:30px 0 40px;border-top:1px solid var(--line);margin-top:40px}
+[data-l]{display:none}html[lang=es] [data-l=es],html[lang=en] [data-l=en]{display:revert}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="#"><img src="img/logo.svg" alt="">PDFRapid</a>
+  <div>
+    <nav style="display:inline">
+      <a href="#funciones"><span data-l="es">Funciones</span><span data-l="en">Features</span></a>
+      <a id="guide" href="guia/guia_es.html"><span data-l="es">Guía</span><span data-l="en">Guide</span></a>
+      <a href="https://github.com/xev777/PDFRapid">GitHub</a>
+    </nav>
+    <span class="lang"><button data-set="es">ES</button><button data-set="en">EN</button></span>
+  </div>
+</header>
+
+<section class="hero">
+  <h1 data-l="es">Edita tus PDF gratis, sin conexión y sin anuncios</h1>
+  <h1 data-l="en">Edit your PDFs for free, offline and ad-free</h1>
+  <p data-l="es">PDFRapid es un editor de PDF libre para Windows: anota, firma, rellena formularios, reconoce texto (OCR), une y divide. Tus documentos nunca salen de tu equipo.</p>
+  <p data-l="en">PDFRapid is a free, open-source PDF editor for Windows: annotate, sign, fill forms, recognise text (OCR), merge and split. Your documents never leave your computer.</p>
+  <a class="btn pri" href="https://github.com/xev777/PDFRapid/releases/latest"><span data-l="es">Descargar para Windows</span><span data-l="en">Download for Windows</span></a>
+  <a class="btn sec" href="https://ko-fi.com/fererazo77">☕ <span data-l="es">Apoyar el proyecto</span><span data-l="en">Support the project</span></a>
+  <div class="small"><span data-l="es">Windows 10/11 (64 bits) · instalador o portable · licencia GNU AGPL v3</span><span data-l="en">Windows 10/11 (64-bit) · installer or portable · GNU AGPL v3 license</span></div>
+  <img class="shot" src="img/pdfrapid.png" alt="PDFRapid">
+</section>
+
+<section id="funciones" class="grid">
+  <div class="card"><h3 data-l="es">Anotar y revisar</h3><h3 data-l="en">Annotate and review</h3>
+    <p data-l="es">Resaltar, comentar, dibujar, sellos, medir distancias y áreas, comparar documentos.</p>
+    <p data-l="en">Highlight, comment, draw, stamps, measure distances and areas, compare documents.</p></div>
+  <div class="card"><h3 data-l="es">Rellenar y firmar</h3><h3 data-l="en">Fill and sign</h3>
+    <p data-l="es">Formularios, firma visual e iniciales, y firma digital con certificado, token o certificados de Windows.</p>
+    <p data-l="en">Forms, visual signature and initials, and digital signatures with a certificate file, token or Windows certificates.</p></div>
+  <div class="card"><h3 data-l="es">OCR sin internet</h3><h3 data-l="en">Offline OCR</h3>
+    <p data-l="es">Convierte escaneados en PDF con texto buscable y copiable, también desde el escáner.</p>
+    <p data-l="en">Turn scans into searchable, copyable PDFs, straight from your scanner too.</p></div>
+  <div class="card"><h3 data-l="es">Organizar páginas</h3><h3 data-l="en">Organise pages</h3>
+    <p data-l="es">Unir, dividir (también por marcadores), girar, recortar, numerar, encabezados y fondos.</p>
+    <p data-l="en">Merge, split (also by bookmarks), rotate, crop, number pages, headers and backgrounds.</p></div>
+  <div class="card"><h3 data-l="es">Convertir</h3><h3 data-l="en">Convert</h3>
+    <p data-l="es">A y desde Word, Excel, imágenes, texto y PDF/A para archivo a largo plazo.</p>
+    <p data-l="en">To and from Word, Excel, images, text and PDF/A for long-term archiving.</p></div>
+  <div class="card"><h3 data-l="es">Ayuda en cada función</h3><h3 data-l="en">Help everywhere</h3>
+    <p data-l="es">Pulsa F1 o «?»: qué hace, para qué sirve, cómo se usa y un ejemplo. Leer en voz alta y ortografía incluidos.</p>
+    <p data-l="en">Press F1 or "?": what it does, why, how and an example. Read aloud and spell check included.</p></div>
+</section>
+
+<section class="band">
+  <h3 data-l="es">Privado por diseño</h3><h3 data-l="en">Private by design</h3>
+  <p data-l="es">Sin cuentas, sin telemetría y sin nube. Solo se conecta a internet si tú lo pides (por ejemplo, el sello de tiempo al firmar). <a href="https://github.com/xev777/PDFRapid/blob/main/docs/legal/PRIVACIDAD.md">Política de privacidad</a>.</p>
+  <p data-l="en">No accounts, no telemetry and no cloud. It only goes online if you ask it to (for example, a timestamp when signing). <a href="https://github.com/xev777/PDFRapid/blob/main/docs/legal/PRIVACIDAD.md">Privacy policy</a>.</p>
+</section>
+
+<section class="band">
+  <h3 data-l="es">Aviso de Windows al instalar</h3><h3 data-l="en">Windows warning when installing</h3>
+  <p data-l="es">Mientras se tramita el certificado de firma de código (SignPath Foundation), Windows puede mostrar «Windows protegió su PC»: elige <b>Más información → Ejecutar de todas formas</b>. Puedes verificar la descarga con los SHA-256 publicados en cada versión. <a href="https://github.com/xev777/PDFRapid/blob/main/CODE_SIGNING.md">Política de firma</a>.</p>
+  <p data-l="en">While the code-signing certificate (SignPath Foundation) is pending, Windows may show "Windows protected your PC": choose <b>More info → Run anyway</b>. You can verify the download with the SHA-256 hashes published with each release. <a href="https://github.com/xev777/PDFRapid/blob/main/CODE_SIGNING.md">Signing policy</a>.</p>
+</section>
+
+<footer>
+  © 2026 Fernando Erazo · <a href="https://github.com/xev777/PDFRapid">GitHub</a> ·
+  <a href="https://github.com/xev777/PDFRapid/blob/main/LICENSE">GNU AGPL v3</a> ·
+  <a href="https://ko-fi.com/fererazo77">Ko-fi</a> ·
+  <a href="https://github.com/xev777/PDFRapid/issues"><span data-l="es">Reportar un problema</span><span data-l="en">Report an issue</span></a>
+</footer>
+</div>
+<script>
+function set(l){document.documentElement.lang=l;document.getElementById("guide").href="guia/guia_"+l+".html";
+ document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.set===l));
+ try{localStorage.setItem("lang",l)}catch(e){}}
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>set(b.dataset.set));
+let l=null;try{l=localStorage.getItem("lang")}catch(e){}
+set(l||((navigator.language||"es").startsWith("es")?"es":"en"));
+</script>
+</body>
+</html>

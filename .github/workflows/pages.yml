@@ -1,0 +1,40 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Publica la página del proyecto (site/ + guía de usuario) en GitHub Pages.
+name: pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["site/**", "docs/guia/**", "docs/img/**", "docs/marca/**", ".github/workflows/pages.yml"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Armar el sitio
+        run: |
+          mkdir -p _site/img _site/guia
+          cp -r site/* _site/
+          cp docs/img/pdfrapid.png _site/img/
+          cp docs/marca/kofi-preview-1200x600-en.png _site/img/preview.png
+          cp docs/guia/guia_es.html docs/guia/guia_en.html _site/guia/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
