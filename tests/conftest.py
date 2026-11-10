@@ -71,3 +71,23 @@ def _sin_red(monkeypatch):
     monkeypatch.setattr(socket.socket, "connect_ex", vigilar(socket.socket.connect_ex, 1))
     monkeypatch.setattr(socket, "getaddrinfo", vigilar(socket.getaddrinfo, 0))
     monkeypatch.setattr(socket, "create_connection", vigilar(socket.create_connection, 0))
+
+
+@pytest.fixture(autouse=True)
+def _liberar_ventanas():
+    """Destruye las ventanas que crea cada prueba. Sin esto se acumulaban miles (≈4 GB) y, con poca RAM libre,
+    Qt fallaba al pintar (access violation) o veraPDF se quedaba sin memoria."""
+    from PyQt6.QtWidgets import QApplication
+    app = QApplication.instance()
+    antes = {id(w) for w in app.topLevelWidgets()} if app else set()
+    yield
+    app = QApplication.instance()
+    if not app:
+        return
+    from PyQt6.QtCore import QEvent
+    from ui.main_window import MainWindow
+    for w in app.topLevelWidgets():         # solo ventanas principales: los singletons (lupa QR…) viven toda la sesión
+        if id(w) not in antes and isinstance(w, MainWindow):
+            w.hide(); w.deleteLater()      # sin close(): no dispara «¿guardar cambios?»
+    QApplication.sendPostedEvents(None, QEvent.Type.DeferredDelete.value)
+    app.processEvents()
