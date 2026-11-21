@@ -166,6 +166,9 @@ QDialog QComboBox QAbstractItemView {{ background-color:{C['white']}; color:{C['
 QDialog QCheckBox, QDialog QRadioButton {{ background:transparent; color:{C['text']}; spacing:8px; }}
 QDialog QCheckBox::indicator {{ width:16px; height:16px; border:1px solid {C['border']}; border-radius:4px; background-color:{C['white']}; }}
 QDialog QCheckBox::indicator:checked {{ background-color:{C['accent']}; border-color:{C['accent']}; image:url({_CHECK}); }}
+QDialog QRadioButton::indicator {{ width:14px; height:14px; border:1px solid {C['border']}; border-radius:8px; background-color:{C['white']}; }}
+QDialog QRadioButton::indicator:checked {{ border:5px solid {C['accent']}; width:6px; height:6px; }}
+QDialog QRadioButton::indicator:disabled {{ background-color:{C['border']}; }}
 QDialog QListWidget, QDialog QTreeWidget {{ background-color:{C['white']}; color:{C['text']}; border:1px solid {C['border']}; border-radius:8px; }}
 QDialog QTabWidget::pane {{ border:1px solid {C['border']}; border-radius:8px; background-color:{C['panel']}; top:-1px; }}
 QDialog QTabBar::tab {{ background:transparent; color:{C['muted']}; border:none; padding:7px 16px; margin-right:2px; }}
