@@ -5,7 +5,7 @@
 $ErrorActionPreference = "Stop"
 $root = Split-Path $PSScriptRoot -Parent
 Set-Location $root
-$ver = "1.0.0"
+$ver = "1.0.1"
 # Python del proyecto (venv) o, en GitHub Actions, el del sistema.
 $py = if (Test-Path "$root\venv\Scripts\python.exe") { "$root\venv\Scripts\python" } else { "python" }
 

@@ -4,7 +4,7 @@
 from PyQt6.QtCore import Qt
 
 APP_NAME = "PDFRapid"
-APP_VERSION = "1.0"
+APP_VERSION = "1.0.1"
 APP_TAGLINE = "Editor de PDF libre y sin conexión"
 APP_AUTHOR = "Fernando Erazo"
 SOURCE_URL = "https://github.com/xev777/PDFRapid"                 # código fuente público (AGPL)

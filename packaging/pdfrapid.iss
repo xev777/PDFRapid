@@ -2,7 +2,7 @@
 ; Copyright (C) 2026 Fernando Erazo
 ; Instalador de PDFRapid (Inno Setup 6). Antes: compilar con PyInstaller (packaging\build.ps1).
 #define AppName "PDFRapid"
-#define AppVersion "1.0.0"
+#define AppVersion "1.0.1"
 #define AppExe "PDFRapid.exe"
 
 [Setup]
