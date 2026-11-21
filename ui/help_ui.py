@@ -36,7 +36,7 @@ TITLE_TOPICS = {
     "Propiedades del documento": "propiedades", "Preferencias": "preferencias", "Seleccionar rango": "miniaturas",
     "Procesar por lotes": "lotes", "Agregar comentario": "comentarios", "Editar comentario": "comentarios",
     "Editar texto": "texto", "Editar texto del documento": "texto", "Firmar": "firma_manuscrita",
-    "Firmar con certificado digital": "firma_digital", "Imprimir": "imprimir", "Preferencias de la impresora": "imprimir", "Recortar imagen": "imagen",
+    "Firmar con certificado digital": "firma_digital", "Imprimir": "imprimir", "Recortar imagen": "imagen",
     "Posición y tamaño": "organizar", "Combinar varios PDFs": "operaciones", "Dividir PDF": "operaciones",
     "Enlace": "enlaces", "Resumen de comentarios": "comentarios", "Proteger con contraseña": "proteger", "Recortar páginas": "recortar",
 }

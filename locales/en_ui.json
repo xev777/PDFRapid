@@ -1141,7 +1141,6 @@
  "<p>¿Te es útil? <a href='{0}'>Apoya el proyecto con una donación</a>.</p>": "<p>Is it useful to you? <a href='{0}'>Support the project with a donation</a>.</p>",
  "Privacidad y licencias": "Privacy and licenses",
  "<p><b>Código fuente:</b> <a href='{0}'>{0}</a></p>": "<p><b>Source code:</b> <a href='{0}'>{0}</a></p>",
- "Opciones propias de la impresora (calidad, papel, bandeja)": "Printer-specific options (quality, paper, tray)",
  "Escala de grises (blanco y negro)": "Grayscale (black and white)",
  "ej. 1-3, 8 (de {0})": "e.g. 1-3, 8 (of {0})",
  "Más opciones": "More options",
@@ -1157,7 +1156,6 @@
  "Hoja siguiente": "Next sheet",
  "Configurar página…": "Page setup…",
  "Tamaño de papel y márgenes": "Paper size and margins",
- "Preferencias de la impresora": "Printer preferences",
  "Papel: {0} × {1} mm": "Paper: {0} × {1} mm",
  "Impresora:": "Printer:",
  "Copias:": "Copies:",
@@ -1180,5 +1178,6 @@
  "Escala:": "Scale:",
  "Automática": "Automatic",
  "Vertical": "Portrait",
- "Horizontal": "Landscape"
+ "Horizontal": "Landscape",
+ "Preferencias de impresión del controlador (calidad, tipo de papel, bandeja). Windows las guarda en la impresora, así que también valen para otros programas. Copias, doble cara, grises y orientación de esta ventana mandan en cada impresión.": "The printer driver's printing preferences (quality, paper type, tray). Windows saves them in the printer, so they also apply to other programs. Copies, double-sided, grayscale and orientation in this window take precedence for each print job."
 }

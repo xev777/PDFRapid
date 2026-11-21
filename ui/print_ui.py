@@ -5,9 +5,9 @@ páginas por hoja, folleto, doble cara, orientación, comentarios y una vista pr
 Las hojas se componen en un PDF aparte (core/imposition.py); la vista previa y la impresión usan la misma
 colocación (`place`), así lo que se ve es lo que sale."""
 import pymupdf
-from PyQt6.QtCore import QRectF, Qt, QTimer
+from PyQt6.QtCore import QRectF, Qt, QTimer, QProcess
 from PyQt6.QtGui import QPainter, QImage, QPageLayout, QPixmap, QColor, QPen
-from PyQt6.QtPrintSupport import QPrinter, QPrinterInfo, QPrintDialog, QPageSetupDialog
+from PyQt6.QtPrintSupport import QPrinter, QPrinterInfo, QPageSetupDialog
 from PyQt6.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QGridLayout, QGroupBox, QComboBox, QLineEdit, QCheckBox,
                              QDoubleSpinBox, QSpinBox, QRadioButton, QButtonGroup, QLabel, QMessageBox, QPushButton,
                              QStackedWidget, QWidget, QSlider, QToolButton, QApplication)
@@ -124,7 +124,10 @@ class PrintDialog(QDialog):
         self.cb_printer.addItems(names)
         want = self.st.value("print/printer", "") or QPrinterInfo.defaultPrinterName()
         if want in names: self.cb_printer.setCurrentText(want)
-        b_prefs = QPushButton(T("Preferencias…")); b_prefs.setToolTip(T("Opciones propias de la impresora (calidad, papel, bandeja)"))
+        self.b_prefs = b_prefs = QPushButton(T("Preferencias…"))
+        b_prefs.setToolTip(T("Preferencias de impresión del controlador (calidad, tipo de papel, bandeja). Windows las guarda en la "
+                             "impresora, así que también valen para otros programas. Copias, doble cara, grises y orientación "
+                             "de esta ventana mandan en cada impresión."))
         b_prefs.clicked.connect(self._printer_prefs)
         self.sp_copies = QSpinBox(); self.sp_copies.setRange(1, 999)
         self.cb_gray = QCheckBox(T("Escala de grises (blanco y negro)"))
@@ -309,13 +312,21 @@ class PrintDialog(QDialog):
             self.cb_duplex.setChecked(True); self.rb_short.setChecked(True)
 
     def _printer_prefs(self):
-        self.pr.setPrinterName(self.cb_printer.currentText())
-        dlg = QPrintDialog(self.pr, self); dlg.setWindowTitle(T("Preferencias de la impresora"))
-        if dlg.exec() == QDialog.DialogCode.Accepted:
-            i = self.cb_printer.findText(self.pr.printerName())
-            if i >= 0: self.cb_printer.setCurrentIndex(i)
-            self.sp_copies.setValue(max(1, self.pr.copyCount()))
-            self._key = None; self.refresh()
+        """Abre las «Preferencias de impresión» del controlador (la ventana del fabricante) para la impresora elegida."""
+        name = self.cb_printer.currentText()
+        if not name: return
+        import os
+        exe = os.path.join(os.environ.get("SystemRoot", r"C:\Windows"), "System32", "rundll32.exe")
+        self._proc = QProcess(self)
+        self._proc.finished.connect(self._prefs_closed)
+        self.b_prefs.setEnabled(False)
+        self._proc.start(exe, ["printui.dll,PrintUIEntry", "/e", "/n", name])     # sin shell: nombre como argumento
+
+    def _prefs_closed(self, *_):
+        """Al cerrar las preferencias: una impresora nueva toma los valores guardados (papel, etc.)."""
+        self.b_prefs.setEnabled(True)
+        self.pr = QPrinter(QPrinter.PrinterMode.HighResolution)
+        self._key = None; self.refresh()
 
     def _page_setup(self):
         self.pr.setPrinterName(self.cb_printer.currentText())

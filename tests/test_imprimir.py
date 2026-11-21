@@ -57,3 +57,19 @@ def test_imprime_a_pdf_con_giro_automatico(qapp, tmp_path):
     print_ui.paint(pr, doc, opts)
     res = pymupdf.open(out)
     assert len(res) == 3 and all(p.rect.height > p.rect.width for p in res)   # papel vertical en todas
+
+
+def test_preferencias_abre_el_controlador(qapp, monkeypatch):
+    """«Preferencias…» abre las preferencias del controlador (printui) para la impresora elegida, sin shell."""
+    llamadas = []
+    monkeypatch.setattr(print_ui.QProcess, "start", lambda self, exe, args: llamadas.append((exe, args)))
+    dlg = print_ui.PrintDialog(None, 1, 0, _doc())
+    try:
+        dlg.cb_printer.addItem("Impresora de prueba"); dlg.cb_printer.setCurrentText("Impresora de prueba")
+        dlg._printer_prefs()
+        exe, args = llamadas[0]
+        assert exe.lower().endswith(r"system32\rundll32.exe") and args == ["printui.dll,PrintUIEntry", "/e", "/n", "Impresora de prueba"]
+        assert not dlg.b_prefs.isEnabled()
+        dlg._prefs_closed(); assert dlg.b_prefs.isEnabled()
+    finally:
+        dlg.done(0)
