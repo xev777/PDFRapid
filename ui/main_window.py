@@ -719,7 +719,7 @@ class MainWindow(QMainWindow):
         from PyQt6.QtCore import QProcess
         if QMessageBox.question(self, APP_NAME, msg) == QMessageBox.StandardButton.Yes and self.close():
             args = sys.argv[1:] if getattr(sys, "frozen", False) else sys.argv
-            QProcess.startDetached(sys.executable, args)
+            self._release_instance(); QProcess.startDetached(sys.executable, args)
 
     def _set_theme(self, key):
         from PyQt6.QtCore import QProcess
@@ -728,7 +728,7 @@ class MainWindow(QMainWindow):
         qsettings("PDFManager").setValue("theme", key)
         if QMessageBox.question(self, T("Tema"), Tf("El tema se aplica al reiniciar {0}. ¿Reiniciar ahora?", APP_NAME))                 == QMessageBox.StandardButton.Yes and self.close():     # close() pregunta por cambios sin guardar
             args = sys.argv[1:] if getattr(sys, "frozen", False) else sys.argv
-            QProcess.startDetached(sys.executable, args)
+            self._release_instance(); QProcess.startDetached(sys.executable, args)
 
     def _goto(self, idx):
         if self._viewer and self._viewer.canvases:
@@ -786,6 +786,21 @@ class MainWindow(QMainWindow):
         self._load_toc()
         self._ocr_panel.set_doc(doc, self._viewer.canvases)
         self.search_panel.set_doc(doc, self._viewer.zoom)
+
+    def open_from_instance(self, paths):
+        """PDF enviados por otra instancia (doble clic en el Explorador): pestañas nuevas y ventana al frente."""
+        for p in paths:
+            if p.lower().endswith(".pdf") and os.path.isfile(p):
+                self._open_path(p)
+        if self.isMinimized():
+            self.showNormal()
+        self.show(); self.raise_(); self.activateWindow()
+
+    def _release_instance(self):
+        """Antes de reiniciar: que la nueva instancia sea la principal y no le pase los archivos a esta."""
+        inst = getattr(QApplication.instance(), "_single_instance", None)
+        if inst is not None:
+            inst.release()
 
     def _open_path(self, path):
         if not os.path.exists(path):

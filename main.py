@@ -50,6 +50,17 @@ def main():
         app.setOrganizationName("Pdfgm")          # clave interna de la configuración guardada
         app.setApplicationVersion(APP_VERSION)
 
+        # Una sola instancia: si ya hay una ventana abierta, le pasa los PDF (como pestañas) y termina.
+        from core.single_instance import SingleInstance, pdf_args
+        pdfs = pdf_args(sys.argv[1:])
+        instance = SingleInstance()
+        if not instance.start(pdfs):
+            log.info(f"Enviado a la instancia abierta: {len(pdfs)} archivo(s)")
+            return
+        app._single_instance = instance
+        pending = []                              # rutas recibidas antes de que exista la ventana
+        instance.files.connect(pending.extend)
+
         # Fusion garantiza que QSS se aplique de forma consistente a los widgets.
         app.setStyle("Fusion")
 
@@ -85,8 +96,7 @@ def main():
 
         from ui.main_window import MainWindow
         window = MainWindow()
-        pdf = next((a for a in sys.argv[1:] if a.lower().endswith(".pdf") and os.path.isfile(a)), None)
-        if pdf:                                   # "Abrir con…" / doble clic en un .pdf
+        for pdf in pdfs:                          # "Abrir con…" / doble clic en uno o varios .pdf
             branding.message(splash, Tf("Abriendo {0}…", os.path.basename(pdf)))
             app.processEvents()
             window._open_path(pdf)
@@ -94,6 +104,9 @@ def main():
         def mostrar():
             window.show()
             splash.finish(window)
+            instance.files.disconnect(pending.extend)
+            instance.files.connect(window.open_from_instance)
+            if pending: window.open_from_instance(list(pending))
         # mínimo ~1,6 s en pantalla para que la presentación no sea un parpadeo
         QTimer.singleShot(max(0, int((1.6 - (time.monotonic() - t0)) * 1000)), mostrar)
 
