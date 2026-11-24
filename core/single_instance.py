@@ -22,7 +22,7 @@ def _name(base):
         user = getpass.getuser()
     except Exception:
         user = os.environ.get("USERNAME", "")
-    return f"{base}-{hashlib.sha1(user.encode('utf-8', 'replace')).hexdigest()[:12]}"
+    return f"{base}-{hashlib.sha256(user.encode('utf-8', 'replace')).hexdigest()[:12]}"
 
 
 def pdf_args(argv):
